@@ -18,9 +18,9 @@ public class NewsRecyclerViewAdapter extends
     RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
   ArrayList<NewsItem> newsList;
-  Context context;
+  private Context context;
 
-  public NewsRecyclerViewAdapter(ArrayList<NewsItem> newsList, Context context) {
+  NewsRecyclerViewAdapter(ArrayList<NewsItem> newsList, Context context) {
     this.newsList = newsList;
     this.context = context;
   }
@@ -55,7 +55,7 @@ public class NewsRecyclerViewAdapter extends
     public TextView description;
     public TextView date;
 
-    public NewsViewHolder(View itemView) {
+    NewsViewHolder(View itemView) {
       super(itemView);
 
       title = itemView.findViewById(R.id.news_title);
@@ -66,13 +66,9 @@ public class NewsRecyclerViewAdapter extends
     void bind(int index) {
       final String URL = newsList.get(index).getUrl();
 
-//      title.setText("Title: " + newsList.get(index).getTitle());
-//      title.setText("Description: " + newsList.get(index).getDescription());
-//      title.setText("Date: " + newsList.get(index).getPublishedAt());
-
-      title.setText(String.format("Title: %s", newsList.get(index).getTitle()));
-      description.setText(String.format("Description: %s", newsList.get(index).getDescription()));
-      date.setText(String.format("Date: %s", newsList.get(index).getPublishedAt()));
+      title.setText(String.format("Title\n%s", newsList.get(index).getTitle()));
+      description.setText(String.format("Description\n%s", newsList.get(index).getDescription()));
+      date.setText(String.format("Date\n%s", newsList.get(index).getPublishedAt()));
 
       itemView.setOnClickListener(new OnClickListener() {
         @Override

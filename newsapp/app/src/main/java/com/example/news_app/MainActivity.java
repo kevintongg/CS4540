@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-  private ArrayList<NewsItem> newsItems = new ArrayList<>();
-  private NewsRecyclerViewAdapter recyclerAdapter;
+  private ArrayList<NewsItem> news = new ArrayList<>();
+  private NewsRecyclerViewAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     RecyclerView recyclerView = findViewById(R.id.news_recyclerview);
 
-    recyclerAdapter = new NewsRecyclerViewAdapter(newsItems, this);
-    recyclerView.setAdapter(recyclerAdapter);
+    adapter = new NewsRecyclerViewAdapter(news, this);
+    recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(layoutManager);
   }
 
@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
-      newsItems = JsonUtils.parseNews(result);
-      recyclerAdapter.newsList.addAll(newsItems);
-      recyclerAdapter.notifyDataSetChanged();
+      news = JsonUtils.parseNews(result);
+      adapter.newsList.addAll(news);
+      adapter.notifyDataSetChanged();
     }
   }
 }

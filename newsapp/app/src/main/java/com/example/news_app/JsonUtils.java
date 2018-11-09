@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class JsonUtils {
 
   public static ArrayList<NewsItem> parseNews(String JSONString) {
-    ArrayList<NewsItem> items = new ArrayList<>();
+    ArrayList<NewsItem> news = new ArrayList<>();
     try {
       JSONObject object = new JSONObject(JSONString);
       JSONArray array = object.getJSONArray("articles");
@@ -17,7 +17,7 @@ public class JsonUtils {
       for (int i = 0; i < array.length(); i++) {
         JSONObject item = array.getJSONObject(i);
 
-        items.add(new NewsItem(
+        news.add(new NewsItem(
             item.getString("author"),
             item.getString("title"),
             item.getString("description"),
@@ -28,7 +28,7 @@ public class JsonUtils {
     } catch (JSONException e) {
       e.printStackTrace();
     }
-    return items;
+    return news;
   }
 }
 
