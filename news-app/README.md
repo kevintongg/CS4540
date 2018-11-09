@@ -1,1 +1,3 @@
-## News AppGets news from Ars Technica
+# News App
+
+**Gets news from Ars Technica**
