@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class NewsRecyclerViewAdapter extends
     RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
-  ArrayList<NewsItem> newsList;
+  ArrayList<NewsItem> news;
   private Context context;
 
-  NewsRecyclerViewAdapter(ArrayList<NewsItem> newsList, Context context) {
-    this.newsList = newsList;
+  NewsRecyclerViewAdapter(ArrayList<NewsItem> news, Context context) {
+    this.news = news;
     this.context = context;
   }
 
@@ -46,7 +46,7 @@ public class NewsRecyclerViewAdapter extends
 
   @Override
   public int getItemCount() {
-    return newsList.size();
+    return news.size();
   }
 
   class NewsViewHolder extends ViewHolder {
@@ -64,11 +64,11 @@ public class NewsRecyclerViewAdapter extends
     }
 
     void bind(int index) {
-      final String URL = newsList.get(index).getUrl();
+      final String URL = news.get(index).getUrl();
 
-      title.setText(String.format("Title\n%s", newsList.get(index).getTitle()));
-      description.setText(String.format("Description\n%s", newsList.get(index).getDescription()));
-      date.setText(String.format("Date\n%s", newsList.get(index).getPublishedAt()));
+      title.setText(String.format("Title\n%s", news.get(index).getTitle()));
+      description.setText(String.format("Description\n%s", news.get(index).getDescription()));
+      date.setText(String.format("Date Published\n%s", news.get(index).getPublishedAt()));
 
       itemView.setOnClickListener(new OnClickListener() {
         @Override

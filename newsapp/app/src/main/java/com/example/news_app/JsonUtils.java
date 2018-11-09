@@ -1,15 +1,15 @@
 package com.example.news_app;
 
-import com.example.news_app.NewsItem;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class JsonUtils {
+class JsonUtils {
 
-  public static ArrayList<NewsItem> parseNews(String JSONString) {
+  static ArrayList<NewsItem> parseNews(String JSONString) {
     ArrayList<NewsItem> news = new ArrayList<>();
+
     try {
       JSONObject object = new JSONObject(JSONString);
       JSONArray array = object.getJSONArray("articles");

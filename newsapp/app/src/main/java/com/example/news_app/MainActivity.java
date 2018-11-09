@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    int clickedItemId = item.getItemId();
-    if (clickedItemId == R.id.get_news) {
+    int selectedItemId = item.getItemId();
+    if (selectedItemId == R.id.get_news) {
       displayNews();
       return true;
     }
@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
   private void displayNews() {
     URL url = NetworkUtils.buildURL();
-    new NewsQueryTask().execute(url);
+    NewsQueryTask task = new NewsQueryTask();
+    task.execute(url);
   }
 
   public class NewsQueryTask extends AsyncTask<URL, Void, String> {
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
       news = JsonUtils.parseNews(result);
-      adapter.newsList.addAll(news);
+      adapter.news.addAll(news);
       adapter.notifyDataSetChanged();
     }
   }
