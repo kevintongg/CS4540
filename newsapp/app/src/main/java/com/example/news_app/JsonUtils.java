@@ -1,4 +1,4 @@
-package com.example.news_app.utilities;
+package com.example.news_app;
 
 import com.example.news_app.NewsItem;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class JsonUtils {
 
   public static ArrayList<NewsItem> parseNews(String JSONString) {
-    ArrayList<NewsItem> newsList = new ArrayList<>();
+    ArrayList<NewsItem> items = new ArrayList<>();
     try {
       JSONObject object = new JSONObject(JSONString);
       JSONArray array = object.getJSONArray("articles");
@@ -17,7 +17,7 @@ public class JsonUtils {
       for (int i = 0; i < array.length(); i++) {
         JSONObject item = array.getJSONObject(i);
 
-        newsList.add(new NewsItem(
+        items.add(new NewsItem(
             item.getString("author"),
             item.getString("title"),
             item.getString("description"),
@@ -28,7 +28,7 @@ public class JsonUtils {
     } catch (JSONException e) {
       e.printStackTrace();
     }
-    return newsList;
+    return items;
   }
 }
 

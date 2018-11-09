@@ -1,4 +1,4 @@
-package com.example.news_app.utilities;
+package com.example.news_app;
 
 import android.net.Uri;
 import java.io.IOException;
@@ -14,7 +14,6 @@ public class NetworkUtils {
 
   public static URL buildURL() {
     Uri uri = Uri.parse(BASE_URL).buildUpon().build();
-
     URL url = null;
 
     try {

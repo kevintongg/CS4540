@@ -7,15 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.example.news_app.utilities.JsonUtils;
-import com.example.news_app.utilities.NetworkUtils;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
   private ArrayList<NewsItem> newsItems = new ArrayList<>();
-  private NewsRecyclerViewAdapter viewAdapter;
+  private NewsRecyclerViewAdapter recyclerAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +24,30 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager layoutManager = new LinearLayoutManager(this);
     RecyclerView recyclerView = findViewById(R.id.news_recyclerview);
 
-    viewAdapter = new NewsRecyclerViewAdapter(newsItems, this);
-    recyclerView.setAdapter(viewAdapter);
+    recyclerAdapter = new NewsRecyclerViewAdapter(newsItems, this);
+    recyclerView.setAdapter(recyclerAdapter);
     recyclerView.setLayoutManager(layoutManager);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main_menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int clickedItemId = item.getItemId();
+    if (clickedItemId == R.id.get_news) {
+      displayNews();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  private void displayNews() {
+    URL url = NetworkUtils.buildURL();
+    new NewsQueryTask().execute(url);
   }
 
   public class NewsQueryTask extends AsyncTask<URL, Void, String> {
@@ -40,41 +60,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected String doInBackground(URL... urls) {
       URL url = urls[0];
-      String result = null;
+      String data = null;
       try {
-        result = NetworkUtils.getResponseFromHttpUrl(url);
-      } catch (Exception e) {
+        data = NetworkUtils.getResponseFromHttpUrl(url);
+      } catch (IOException e) {
         e.printStackTrace();
       }
-      return result;
+      return data;
     }
 
     @Override
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
       newsItems = JsonUtils.parseNews(result);
-      viewAdapter.newsList.addAll(newsItems);
+      recyclerAdapter.newsList.addAll(newsItems);
+      recyclerAdapter.notifyDataSetChanged();
     }
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.main_menu, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    int clickedItemId = item.getItemId();
-    if (clickedItemId == R.id.action_search) {
-      displayNews();
-      return true;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
-  private void displayNews() {
-    URL url = NetworkUtils.buildURL();
-    new NewsQueryTask().execute(url);
   }
 }

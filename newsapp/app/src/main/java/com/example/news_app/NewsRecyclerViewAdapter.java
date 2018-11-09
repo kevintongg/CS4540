@@ -11,33 +11,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.news_app.NewsRecyclerViewAdapter.NewsViewHolder;
 import java.util.ArrayList;
 
 
-public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsViewHolder> {
+public class NewsRecyclerViewAdapter extends
+    RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
   ArrayList<NewsItem> newsList;
-  private Context context;
+  Context context;
 
   public NewsRecyclerViewAdapter(ArrayList<NewsItem> newsList, Context context) {
     this.newsList = newsList;
-    this.context = context;
-  }
-
-  public ArrayList<NewsItem> getNewsList() {
-    return newsList;
-  }
-
-  public void setNewsList(ArrayList<NewsItem> newsList) {
-    this.newsList = newsList;
-  }
-
-  public Context getContext() {
-    return context;
-  }
-
-  public void setContext(Context context) {
     this.context = context;
   }
 
@@ -82,13 +66,13 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsViewHolder
     void bind(int index) {
       final String URL = newsList.get(index).getUrl();
 
-//      title.setText(String.format("Title: %s", newsList.get(index).getTitle()));
-//      description.setText(String.format("Description: %s", newsList.get(index).getDescription()));
-//      date.setText(String.format("Date: %s", newsList.get(index).getPublishedAt()));
+//      title.setText("Title: " + newsList.get(index).getTitle());
+//      title.setText("Description: " + newsList.get(index).getDescription());
+//      title.setText("Date: " + newsList.get(index).getPublishedAt());
 
-      title.setText("Title: " + newsList.get(index).getTitle());
-      title.setText("Description: " + newsList.get(index).getDescription());
-      title.setText("Date: " + newsList.get(index).getPublishedAt());
+      title.setText(String.format("Title: %s", newsList.get(index).getTitle()));
+      description.setText(String.format("Description: %s", newsList.get(index).getDescription()));
+      date.setText(String.format("Date: %s", newsList.get(index).getPublishedAt()));
 
       itemView.setOnClickListener(new OnClickListener() {
         @Override

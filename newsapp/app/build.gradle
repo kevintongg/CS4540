@@ -3,8 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.rkjc.news_app_2"
-        minSdkVersion 24
+//        applicationId "com.example.rkjc.news_app_2"
+        applicationId "com.example.news_app"
+        minSdkVersion 25
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -31,8 +32,8 @@ dependencies {
     implementation 'org.json:json:20180813'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
 
     androidTestImplementation('com.android.support.test.espresso:espresso-contrib:2.2') {
         // Necessary to avoid version conflicts

@@ -1,6 +1,5 @@
 package com.example.news_app;
 
-import com.example.news_app.utilities.NetworkUtils;
 import java.net.URL;
 import org.junit.Test;
 
