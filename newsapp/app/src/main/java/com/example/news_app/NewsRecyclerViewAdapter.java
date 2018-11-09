@@ -58,11 +58,11 @@ public class NewsRecyclerViewAdapter extends
     NewsViewHolder(View itemView) {
       super(itemView);
 
-      date = itemView.findViewById(R.id.news_date);
+      date = itemView.findViewById(R.id.date);
       dateText = itemView.findViewById(R.id.date_text);
-      title = itemView.findViewById(R.id.news_title);
+      title = itemView.findViewById(R.id.title);
       titleText = itemView.findViewById(R.id.title_text);
-      description = itemView.findViewById(R.id.news_description);
+      description = itemView.findViewById(R.id.description);
       descriptionText = itemView.findViewById(R.id.description_text);
     }
 

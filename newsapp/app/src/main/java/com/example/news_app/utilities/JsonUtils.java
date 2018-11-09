@@ -1,13 +1,14 @@
-package com.example.news_app;
+package com.example.news_app.utilities;
 
+import com.example.news_app.NewsItem;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class JsonUtils {
+public class JsonUtils {
 
-  static ArrayList<NewsItem> parseNews(String JSONString) {
+  public static ArrayList<NewsItem> parseNews(String JSONString) {
     ArrayList<NewsItem> news = new ArrayList<>();
 
     try {

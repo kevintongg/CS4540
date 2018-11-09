@@ -2,6 +2,7 @@ package com.example.news_app;
 
 import static junit.framework.Assert.assertTrue;
 
+import com.example.news_app.utilities.JsonUtils;
 import java.util.ArrayList;
 import org.junit.Test;
 
