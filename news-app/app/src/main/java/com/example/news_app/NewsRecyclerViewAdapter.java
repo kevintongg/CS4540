@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-
 public class NewsRecyclerViewAdapter extends
     RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
