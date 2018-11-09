@@ -1,5 +1,6 @@
 package com.example.news_app;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,17 @@ import android.view.MenuItem;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
   private ArrayList<NewsItem> news = new ArrayList<>();
   private NewsRecyclerViewAdapter adapter;
+
+  @Override
+  protected void attachBaseContext(Context newBase) {
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

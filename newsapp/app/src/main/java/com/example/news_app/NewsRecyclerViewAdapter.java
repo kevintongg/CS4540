@@ -51,24 +51,30 @@ public class NewsRecyclerViewAdapter extends
 
   class NewsViewHolder extends ViewHolder {
 
-    public TextView title;
-    public TextView description;
-    public TextView date;
+    public TextView title, titleText;
+    public TextView description, descriptionText;
+    public TextView date, dateText;
 
     NewsViewHolder(View itemView) {
       super(itemView);
 
-      title = itemView.findViewById(R.id.news_title);
-      description = itemView.findViewById(R.id.news_description);
       date = itemView.findViewById(R.id.news_date);
+      dateText = itemView.findViewById(R.id.date_text);
+      title = itemView.findViewById(R.id.news_title);
+      titleText = itemView.findViewById(R.id.title_text);
+      description = itemView.findViewById(R.id.news_description);
+      descriptionText = itemView.findViewById(R.id.description_text);
     }
 
     void bind(int index) {
       final String URL = news.get(index).getUrl();
 
-      title.setText(String.format("Title\n%s", news.get(index).getTitle()));
-      description.setText(String.format("Description\n%s", news.get(index).getDescription()));
-      date.setText(String.format("Date Published\n%s", news.get(index).getPublishedAt()));
+      title.setText("Title\n");
+      titleText.setText(String.format("%s\n", news.get(index).getTitle()));
+      description.setText("Description\n");
+      descriptionText.setText(String.format("%s\n", news.get(index).getDescription()));
+      date.setText("Date Published\n");
+      dateText.setText(String.format("%s\n", news.get(index).getPublishedAt()));
 
       itemView.setOnClickListener(new OnClickListener() {
         @Override
