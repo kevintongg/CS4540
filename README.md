@@ -1,5 +1,5 @@
-# CS4540
+# CS 4540
 
-## Special Topics in Computer Science
+Special Topics in Computer Science
 
-**Mobile and Cloud Computing**
+:sparkles: Mobile and Cloud Computing :sparkles:
