@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-//        applicationId "com.example.rkjc.news_app_2"
         applicationId "com.example.news_app"
         minSdkVersion 26
         targetSdkVersion 27
@@ -17,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'NEWS_APP_API_KEY', NewsApp_ApiKey
+    }
+
     android {
         testOptions {
             unitTests.returnDefaultValues = true
