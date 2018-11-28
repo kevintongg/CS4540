@@ -7,4 +7,9 @@
   <string name="description">Description</string>
   <string name="description_text">Description</string>
   <string name="refresh">Refresh</string>
+  <string name="article_image">Article Image</string>
+  <string name="main_notification">Primary</string>
+  <string name="new_notification">News Update</string>
+  <string name="new_news_notification">New news has arrived, kupo</string>
+  <string name="new_news">New News</string>
 </resources>
